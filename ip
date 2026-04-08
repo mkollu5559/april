@@ -1,0 +1,1 @@
+timeout 5 bash -c '</dev/tcp//443' && echo OPEN || echo CLOSED
