@@ -1,11 +1,12 @@
-workflow:
+restrict_main_merge_source:
+  stage: change_verification
+  script:
+    - |
+      if [ "$CI_MERGE_REQUEST_TARGET_BRANCH_NAME" = "main" ] && \
+         [ "$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME" != "development" ]; then
+        echo "Only development can be merged into main"
+        exit 1
+      fi
   rules:
-    # 🚫 BLOCK everything except development -> main
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" &&
-           $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" &&
-           $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME != "development"'
-      when: never
-
-    # your existing rules below
-    - if: $CI_PIPELINE_SOURCE == "push"
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
       when: always
