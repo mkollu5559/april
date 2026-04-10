@@ -1,9 +1,1 @@
-curl https://sh.rustup.rs -sSf | sh -s -- -y
-source $HOME/.cargo/env
-rustup update
-rustup default stable
-
-rustc --version
-
-
-rustc --version
+sudo yum install -y cmake gcc gcc-c++ make pkgconfig perl
