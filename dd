@@ -1,0 +1,2 @@
+Yes, it can impact us if traffic or dependencies are still pointed to CFS2 East during the test.
+Our Lambda, S3, and EC2 resources exist in both East and West, so impact should be minimal if failover, routing, replication, and west-side dependencies are already configured correctly. We are reviewing readiness and will validate that services continue operating from West during the test window.
