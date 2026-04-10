@@ -1,1 +1,14 @@
+# install deps (separate like you ran)
+sudo yum install -y golang
 sudo yum install -y cmake gcc gcc-c++ make pkgconfig perl
+sudo yum install -y git rpm-build
+
+# clone repo
+git clone https://github.com/aws/efs-utils
+cd efs-utils
+
+# build rpm
+make rpm
+
+# install rpm
+sudo yum install -y ./build/amazon-efs-utils*.rpm
